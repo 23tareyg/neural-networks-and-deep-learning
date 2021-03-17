@@ -10,7 +10,10 @@ function usually called by our neural network code.
 
 #### Libraries
 # Standard library
-import pickle
+try:
+   import cPickle as pickle
+except:
+   import pickle
 import gzip
 
 # Third-party libraries
@@ -40,7 +43,7 @@ def load_data():
     below.
     """
     f = gzip.open('../data/mnist.pkl.gz', 'rb')
-    training_data, validation_data, test_data = pickle.load(f)
+    training_data, validation_data, test_data = cPickle.load(f)
     f.close()
     return (training_data, validation_data, test_data)
 
